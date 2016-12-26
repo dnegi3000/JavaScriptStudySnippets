@@ -107,5 +107,10 @@ console.log(" " );
 console.log("------------------------------------------------------");
 console.log("------------------------------------------------------");
 
-console.log(" "  + process );
+var process;
+
+if (process != undefined)
+    {
+        console.log(" "  + process );
+    }
 
