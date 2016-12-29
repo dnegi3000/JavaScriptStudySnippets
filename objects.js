@@ -111,11 +111,11 @@ console.log( " =========NEW =================  ");
 
 
 function returnCar2(){
-    console.log("THIS HERE.............");
+    console.log("THIS HERE............returnCar2.");
     console.log(this);
        
     return function (){
-            console.log("THIS HERE");
+            console.log("THIS HERE returnCar2");
             console.log(this);
         this.name = "name of the car ";
         this.manufacturer ="Default";
@@ -124,8 +124,12 @@ function returnCar2(){
     
 }
 
+console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 var  chevySPark = new returnCar2();
+console.log("=============");
 console.log(chevySPark);
+console.log("****************************");
 console.log(chevySPark());
+console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 
 
