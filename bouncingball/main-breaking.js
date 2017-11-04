@@ -63,18 +63,36 @@ Ball.prototype.draw = function() {
 }
 
 Paddle.prototype.draw = function(){
-   if(rightPressed)
-    { 
-     this.x
-    }
-}
+//    if(rightPressed)
+//     { 
+//      this.x
+//     }
+//
+    ctx.beginPath();
+    ctx.fillStyle= this.color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.fill();
+    ctx.closePath();
+
+ }
 
 Paddle.prototype.update = function(){
-  ctx.beginPath();
-  ctx.fillStyle = this.color;
-  ctx.rect(this.x, this.y,this.width,this.height);
-  ctx.fill();
-  ctx.closePath();
+
+      if (rightPressed == true )
+      {
+        console.log(rightPressed  + ',' + leftPressed);
+        this.x =this.x+10;
+        rightPressed = false;
+
+      }
+      if (leftPressed == true)
+      {
+        console.log(rightPressed  + ',' + leftPressed);
+        this.x=this.x-10;
+        leftPressed = false;
+      }
+
+
 }
 
 
@@ -105,14 +123,20 @@ function loop() {
     balls[i].draw();
     balls[i].update();
    }
-   console.log("h : "+ height);
-   console.log(width);
+  
+   if (paddle)
+   {
 
-   paddle = new Paddle(0,height-20);
+   }
+   else {
+
+        paddle = new Paddle(0,height-20);
+    }
    paddle.draw();
    
    requestAnimationFrame(loop);
 }
+
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
         rightPressed = true;
@@ -120,6 +144,9 @@ function keyDownHandler(e) {
     else if(e.keyCode == 37) {
         leftPressed = true;
     }
+   console.log("key pressed : " +  leftPressed + " , " + rightPressed) ;
+   paddle.update();
+
 }
 
 function keyUpHandler(e) {
@@ -132,4 +159,5 @@ function keyUpHandler(e) {
 }
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
 loop();
