@@ -38,7 +38,7 @@ console.log("Second:"  );
 
 function myfun(name )
 {
-console.log("Second:" + name  );
+console.log("Third:" + name  );
     
 }
 
